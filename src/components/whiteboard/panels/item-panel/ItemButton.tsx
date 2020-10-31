@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 
-interface Props {}
+interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
 
 export const ItemButton: FC<Props> = (props: Props) => {

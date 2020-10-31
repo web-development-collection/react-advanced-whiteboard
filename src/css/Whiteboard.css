@@ -1,0 +1,35 @@
+
+
+.Whiteboard {
+    height: 100%;
+    width: 100%;
+
+    background-color: #f3f3f3;
+
+    display: grid;
+    grid-template-columns: 80px 1fr;
+}
+
+.ItemPanel {
+    background-color: #111111;
+}
+
+.ItemButton {
+    border: none;
+    border-radius: 4px;
+
+    color: #111111;
+    background-color: #ffffff;
+    font-weight: 600;
+
+    margin: 10px;
+    padding: 10px;
+
+    cursor: pointer;
+}
+
+.WhiteboardContainer {
+    border: 4px solid #dddddd;
+
+    background-color: transparent;
+}

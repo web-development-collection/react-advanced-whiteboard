@@ -11,6 +11,7 @@ export const Whiteboard: FC<Props> = (props: Props) => {
 
   return <div className="Whiteboard" {...props}>
 
+    {/*<div className="TopPanel"/>*/}
     <ItemPanel/>
     <WhiteboardContainer />
 
