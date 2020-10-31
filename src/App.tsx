@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
+import Whiteboard from "./components/whiteboard/Whiteboard";
 
 
-function App() {
-  return <h1>React Advanced Whiteboard</h1>
+const App: FC = () => {
+
+  return <Whiteboard />;
 }
 
 export default App;
