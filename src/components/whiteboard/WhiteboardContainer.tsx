@@ -1,17 +1,50 @@
-import React, {FC, useRef} from 'react';
-import useMousePosition from "../../hooks/useMousePosition";
+import React, {FC, useEffect} from 'react';
+import {useRecoilValue} from "recoil";
+import {
+  defaultWhiteboardItems, selectedWhiteboardItemsState,
+  useInsertWhiteboardItem,
+  whiteboardItemIdsState
+} from "../../store/whiteboard/items.store";
+import WhiteboardItem from "./items/WhiteboardItem";
+import WhiteboardActionLayer from "./layers/WhiteboardLayer";
 
 
-interface Props {}
+export const WhiteboardContainer: FC<any> = (props: any) => {
+  const whiteboardItems = useRecoilValue(whiteboardItemIdsState);
+  const whiteboardSelectedItems = useRecoilValue(selectedWhiteboardItemsState);
+  const insertWhiteboardItem = useInsertWhiteboardItem();
+
+  // TODO: Remove later
+  useEffect(() => {
+    insertWhiteboardItem(1, defaultWhiteboardItems[1]);
+    insertWhiteboardItem(0, defaultWhiteboardItems[0]);
+  }, []);
 
 
-export const WhiteboardContainer: FC<Props> = (props: Props) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { x, y } = useMousePosition(ref);
+  const renderSelectedItems = () => {
+    return whiteboardSelectedItems.map((itemId: any) => {
+      return <WhiteboardItem key={itemId} id={itemId}/>
+    });
+  }
 
-  console.log(x, y);
+  const renderActionLayer = () => {
+    return <WhiteboardActionLayer />;
+  }
 
-  return <div ref={ref} className="WhiteboardContainer" {...props}/>;
+  const renderNonSelectedItems = () => {
+    return whiteboardItems.map((itemId: any) => {
+      return <WhiteboardItem key={itemId} id={itemId}/>
+    });
+  }
+
+
+  return <div className="WhiteboardContainer" {...props}>
+    {renderNonSelectedItems()}
+
+    {renderActionLayer()}
+
+    {renderSelectedItems()}
+  </div>;
 };
 
 export default WhiteboardContainer;
