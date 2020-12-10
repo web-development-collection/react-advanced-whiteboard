@@ -16,8 +16,31 @@ export const WhiteboardContainer: FC<any> = (props: any) => {
 
   // TODO: Remove later
   useEffect(() => {
-    insertWhiteboardItem(1, defaultWhiteboardItems[1]);
-    insertWhiteboardItem(0, defaultWhiteboardItems[0]);
+
+    for (let i = 0; i < 100; i++) {
+
+      const points = [];
+
+      let numOfPoints = Math.floor(Math.random() * 41);
+
+      let x = Math.floor(Math.random() * 600) + 80;
+      let y = Math.floor(Math.random() * 900);
+
+      for (let j = 0; j < numOfPoints; j++) {
+        console.log("#");
+        points.push([x += Math.floor(Math.random() * 50) - 25, y += Math.floor(Math.random() * 50) - 25]);
+      }
+
+      insertWhiteboardItem(i, {
+        id: i,
+        type: 'line',
+        data: {
+          points,
+        }
+      });
+    }
+
+    // insertWhiteboardItem(0, defaultWhiteboardItems[0]);
   }, []);
 
 

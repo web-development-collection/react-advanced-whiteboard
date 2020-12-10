@@ -24,6 +24,8 @@ export const itemBoundingMap = {
     let maxY = points[0][1];
 
     points.forEach(([x, y]: [number, number]) => {
+      console.log("$");
+
       if (minX > x) minX = x;
       else if (maxX < x) maxX = x;
 
